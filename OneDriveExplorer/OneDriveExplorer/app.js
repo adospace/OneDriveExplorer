@@ -3,37 +3,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-window.onload = function () {
-    layouts.DepObject.logBindingTraceToConsole = true;
-    //remove preloader
-    document.body.removeChild(document.body.firstElementChild);
-    var currentApp = layouts.Application.current;
-    var usersManager = app.UserManager.current;
-    currentApp["OriginalPageLocation"] = window.location.host;
-    //define uri mappings
-    currentApp.map("/login", "app/LoginView"); //mapping is case sensitive
-    currentApp.map("", "app/MainView");
-    //fallback for unauthenticated users
-    currentApp.onBeforeNavigate = function (ctx) {
-        if (ctx.nextUri != "/login" &&
-            !usersManager.logged) {
-            ctx.cancel = true;
-            ctx.returnUri = ctx.nextUri;
-            //user must be logged in before go ahead
-            ctx.nextUri = "/login";
-        }
-    };
-    //navigate to main page
-    currentApp.navigate();
-};
-function onAuthenticated(token, authWindow) {
-    if (token) {
-        if (authWindow) {
-            authWindow.close();
-        }
-        app.UserManager.current.onAuthenticated(token);
-    }
-}
 var app;
 (function (app) {
     var controls;
@@ -384,4 +353,35 @@ var app;
     }(layouts.DepObject));
     app.UserManager = UserManager;
 })(app || (app = {}));
+window.onload = function () {
+    layouts.DepObject.logBindingTraceToConsole = true;
+    //remove preloader
+    document.body.removeChild(document.body.firstElementChild);
+    var currentApp = layouts.Application.current;
+    var usersManager = app.UserManager.current;
+    currentApp["OriginalPageLocation"] = window.location.host;
+    //define uri mappings
+    currentApp.map("/login", "app/LoginView"); //mapping is case sensitive
+    currentApp.map("", "app/MainView");
+    //fallback for unauthenticated users
+    currentApp.onBeforeNavigate = function (ctx) {
+        if (ctx.nextUri != "/login" &&
+            !usersManager.logged) {
+            ctx.cancel = true;
+            ctx.returnUri = ctx.nextUri;
+            //user must be logged in before go ahead
+            ctx.nextUri = "/login";
+        }
+    };
+    //navigate to main page
+    currentApp.navigate();
+};
+function onAuthenticated(token, authWindow) {
+    if (token) {
+        if (authWindow) {
+            authWindow.close();
+        }
+        app.UserManager.current.onAuthenticated(token);
+    }
+}
 //# sourceMappingURL=app.js.map
