@@ -1,0 +1,335 @@
+﻿* {
+    margin: 0px;
+}
+
+html { 
+    height:100%; 
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    height:100%; 
+    margin:0px; 
+    background-color: #353F4B;
+}
+
+/*------------------------------------------*/
+/*   Preloader
+/*------------------------------------------*/
+.preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow: hidden !important;
+}
+
+.loader-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -20px 0 0 -80px;
+}
+
+.signal {
+    display: inline-block;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    height: 30px;
+    opacity: 0;
+    width: 30px;
+    margin-top: 10px;
+    -webkit-animation: pulsate 1s ease-out;
+    -moz-animation: pulsate 1s ease-out;;
+    -webkit-animation-iteration-count:infinite;
+    -moz-animation-iteration-count:infinite;
+}
+
+@-webkit-keyframes pulsate {
+    0% {
+      transform:scale(.1);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform:scale(1.2);
+      opacity: 0;
+    }
+}
+
+@-moz-keyframes pulsate {
+    0% {
+      transform:scale(.1);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform:scale(1.2);
+      opacity: 0;
+    }
+}
+
+/*------------------------------------------*/
+/*   Text-Logo
+/*------------------------------------------*/
+.text-logo{
+    font-family: 'Raleway','Arimo',Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 19px;
+    line-height: 21px;
+    color: #ffffff;
+}
+
+.gridSplitter:active {
+    background-color:darkgrey;
+}
+
+/* Kendo Customizations */
+.k-grid {
+    font-size:small
+}
+.k-grid tbody tr{
+    /*height: 30px;*/
+}
+
+.k-grid .k-state-selected {
+     background: #4BADD0; 
+}
+ 
+.k-grid td{
+    white-space: nowrap;
+}
+
+/* Dashboard */
+.h1 {
+    font-size:xx-large;
+    color: #A8B9C3;
+}
+
+.h3 {
+    font-size:medium;
+    color: #A8B9C3;
+}
+
+.h4 {
+    font-size:small;
+    color: #A8B9C3;
+}
+
+.h5 {
+    font-size:smaller;
+    color: #A8B9C3;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: #367FA9;
+}
+
+.loginContainer {
+    background-color: rgba(53, 63, 75, 0.75);
+    /*border: 1px solid gray;*/
+}
+
+.h5dark {
+    font-size: smaller;
+    color: #787878;
+}
+
+#portalSelection {
+    background-color: #4BADD0;
+}
+
+.portalSelectionItem {
+    color: white;
+}
+
+.portalSelectionItem:hover {
+    background-color: rgb( 40, 44, 47 );
+    cursor:pointer;
+}
+
+#header {
+    background-color: #367FA9;
+}
+
+#header p {
+    color: white;    
+}
+
+.headerElement {
+    cursor:pointer;
+    font-size:larger;
+}
+
+.headerElement:hover {
+    background-color: #8EBC00;
+    cursor: pointer;
+}
+
+
+#leftSide {
+    background-color: #1E282C;
+}
+
+#leftSide p {
+    color: #B8C7CE;   
+}
+
+#leftSide .section:hover {
+    background-color: #8EBC00;
+    cursor:pointer;
+}
+
+#leftSide .section:hover p {
+    color: white;
+}
+
+#leftSide .item {
+    background-color: #222D32;
+}
+
+#leftSide .item:hover {
+    background-color: #8EBC00;
+    cursor:pointer;
+}
+
+#leftSide .item:hover p {
+    color: white;
+}
+
+#leftSideLogo {
+    background-color: #222C38;
+}
+
+
+#logo {
+    background-color: #222C38;
+}
+
+#logo p {
+    color: #A8B9C3;    
+}
+
+.toolbarButton {
+    background-color : transparent !important;
+    border-width: 0px;
+    color: black;
+    cursor:pointer;
+}
+
+.toolbarButton:focus  {
+    background-image : none !important;
+    border-width: 0px;
+    color: black;
+    cursor:pointer;
+}
+
+.toolbarButtonSelected {
+    background-color : #8EBC00 !important;
+    border-width: 0px;
+    color: white;
+    cursor:pointer;
+}
+
+#mainArea {
+    background-color: #E7ECEA;    
+}
+
+/*#mainArea  p {
+    color: #787878;
+}*/
+
+.gridAreaHeader {
+    background-color: #DEE3E1;
+}
+
+#mainArea .item {
+    background-color: #DEE3E1;
+    border-style: solid;
+    border-color: #D4D9D7;
+    border-width:1px;
+}
+
+#mainArea .item:hover {
+    background-color: #E7ECEA;
+    cursor:pointer;
+}
+
+#mainArea .item p {
+    color: #787878;
+}
+
+#mainArea .itemSelected {
+    background-color: #E7ECEA;
+    border-bottom: 2px solid #4BADD0;
+}
+
+#mainArea .itemSelected p {
+    color:black;
+}
+
+#mainArea .itemSelected:hover {
+    cursor:pointer;
+}
+
+.dialog {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(40, 44, 47,0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(40, 44, 47,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(40, 44, 47,0.5);
+    border: 1px solid #D4D9D7;
+    background-color: white;
+}
+
+.dialogContent {
+    background-color: #E7ECEA;
+}
+
+.dialogHeaderCloseButton:hover {
+    background-color: #DEE3E1;
+    cursor:pointer;
+}
+
+.popup {
+    /*-webkit-box-shadow: 0px 0px 90px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 90px -15px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 90px -15px rgba(0,0,0,0.75);*/
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(40, 44, 47,0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(40, 44, 47,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(40, 44, 47,0.5);
+    border: 1px solid #D4D9D7;
+    background-color: #DEE3E1;
+}
+
+.popup .item {
+    cursor:pointer;
+}
+
+.popup .item:hover {
+    background-color: #8EBC00;
+    color: white;
+}
+
+.searchTextbox {
+    border: 0px !important;
+    background-color: rgb(220,220,220) !important;
+}

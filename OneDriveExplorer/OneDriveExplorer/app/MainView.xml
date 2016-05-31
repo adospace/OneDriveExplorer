@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns:appControls="app.controls">
+  <appControls:ProgressIndicator IsBusy="{userManager.isBusy}">
+    <Grid Rows="20 20 * 10" Columns="Auto *">
+      <TextBlock Text="OneDrive Explorer" VerticalAlignment="Center"/>
+      
+    </Grid>
+  </appControls:ProgressIndicator>
+</Grid>

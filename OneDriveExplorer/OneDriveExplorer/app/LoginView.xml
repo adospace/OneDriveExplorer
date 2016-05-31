@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns:appControls="app.controls">
+  <appControls:ProgressIndicator IsBusy="{userManager.isBusy}">
+    <Border class="loginContainer" VerticalAlignment="Center" HorizontalAlignment="Center">
+      <Stack Orientation="Vertical" IsVisible="{formVisible}" MinWidth="300">
+        <TextBlock Text="OneDrive Explorer" Margin="8" class="h1" HorizontalAlignment="Center"/>
+        <Button Text="Sign In" Command="{loginCommand}" class="k-button" Margin="8,16,8,8"/>
+      </Stack>
+    </Border>
+  </appControls:ProgressIndicator>
+  <Stack Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="8">
+    <TextBlock Text="OneDrive Explorer | (c) 2016 Adolfo Marinucci | Layouts 1.0.4" Margin="0,8,0,0" class="h5" HorizontalAlignment="Center"/>
+  </Stack>
+</Grid>
