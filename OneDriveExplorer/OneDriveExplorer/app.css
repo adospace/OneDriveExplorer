@@ -114,7 +114,7 @@ body {
 
 /* Dashboard */
 .h1 {
-    font-size:xx-large;
+    font-size:larger;
     color: #A8B9C3;
 }
 
@@ -131,6 +131,10 @@ body {
 .h5 {
     font-size:smaller;
     color: #A8B9C3;
+}
+
+.icons8 {
+    font-size: large;
 }
 
 .link {
@@ -169,7 +173,7 @@ body {
 }
 
 #header {
-    background-color: #367FA9;
+    background-color: #1e1e1e;
 }
 
 #header p {
@@ -179,6 +183,7 @@ body {
 .headerElement {
     cursor:pointer;
     font-size:larger;
+    color: white;    
 }
 
 .headerElement:hover {
@@ -189,6 +194,7 @@ body {
 
 #leftSide {
     background-color: #1E282C;
+    border-right: 0.5px solid #D4D9D7;
 }
 
 #leftSide p {
@@ -220,6 +226,48 @@ body {
 #leftSideLogo {
     background-color: #222C38;
 }
+
+
+.folderView {
+    background-color: #1E282C;
+    /*border-bottom: 1px solid #D4D9D7;
+    border-right: 1px solid #D4D9D7;*/
+}
+
+.folderView p {
+    color: #B8C7CE;   
+}
+
+.folderView .title {
+    font-size:larger; 
+}
+.folderView .subtitle {
+    font-size:smaller; 
+}
+
+.folderView .content {
+    background-color: #eeeeee;
+}
+
+.folderView .content .item {
+    background-color: #ffffff;
+}
+
+.folderView .content .item p {
+    color: black;   
+}
+
+
+.folderView .content .item:hover {
+    background-color: #8EBC00;
+    cursor:pointer;
+}
+
+.folderView .content .item:hover p {
+    color: white;
+}
+
+
 
 
 #logo {
@@ -263,7 +311,7 @@ body {
     background-color: #DEE3E1;
 }
 
-#mainArea .item {
+/*#mainArea .item {
     background-color: #DEE3E1;
     border-style: solid;
     border-color: #D4D9D7;
@@ -290,7 +338,7 @@ body {
 
 #mainArea .itemSelected:hover {
     cursor:pointer;
-}
+}*/
 
 .dialog {
     -webkit-box-shadow: 0px 0px 10px 0px rgba(40, 44, 47,0.5);

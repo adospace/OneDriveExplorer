@@ -1,9 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Grid xmlns:appControls="app.controls">
-  <appControls:ProgressIndicator IsBusy="{userManager.isBusy}">
-    <Grid Rows="20 20 * 10" Columns="Auto *">
-      <TextBlock Text="OneDrive Explorer" VerticalAlignment="Center"/>
-      
+<Grid id="mainGrid" xmlns:appControls="app.controls" Rows="40 *" Columns="Auto *">
+  <!-- MainHeader Header -->
+  <Border id="header" Grid.ColumnSpan="2">
+    <Grid Columns="Auto Auto * Auto Auto">
+
+      <TextBlock VerticalAlignment="Center" Text="OneDrive Explorer" class="h1" Margin="8,0,10,0"/>
+
+      <!-- Portal Title -->
+      <Stack Orientation="Horizontal" Grid.Column="1" class="headerElement" VerticalAlignment="Stretch">
+        <TextBlock Text="{currentPath.path}" VerticalAlignment="Center" Margin="8,0,8,0"/>
+        <TextBlock Text="&lt;span class=&quot;k-font-icon k-i-arrowhead-s&quot;&gt;&lt;/span&gt;" VerticalAlignment="Center" Margin="2,2,8,0"/>
+        <Stack.Popup>
+          <Popup Position="BottomLeft">
+
+          </Popup>
+        </Stack.Popup>
+      </Stack>
+
+      <!-- User Area -->
+      <TextBlock Text="{userManager.currentUser.displayName}" Grid.Column="3" id="userFriendlyName" VerticalAlignment="Center" Margin="8"/>
+      <Border class="headerElement" VerticalAlignment="Stretch" Grid.Column="4">
+        <TextBlock Text="&lt;i class=&quot;icons8-gender-neutral-user&quot;&gt;&lt;/i&gt;" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8"/>
+        <Border.Popup>
+          <Popup Position="BottomRight" Margin="0,0,2,0">
+            <Stack class="popup">
+              <Stack class="item" Orientation="Horizontal" Height="35" Command="{logoutCommand}">
+                <Image Source="Images/ExitSign-26.png" VerticalAlignment="Center"/>
+                <TextBlock Text="Sign out" Margin="4,0,4,0" VerticalAlignment="Center"/>
+              </Stack>
+            </Stack>
+          </Popup>
+        </Border.Popup>
+      </Border>
     </Grid>
-  </appControls:ProgressIndicator>
+  </Border>
+
+  
+  <!-- Left Side -->
+  <Grid id="leftSide" Width="{leftMenuWidth}" Grid.Row="1" Rows="40 *" Margin="0,0,1,0">
+    
+    <!-- Menu Icon -->
+    <Border class="headerElement" VerticalAlignment="Stretch" Command="{toggleMenuCommand}" Width="{leftMenuWidth}" Margin="0,0,1,0">
+      <TextBlock Text="&lt;span class=&quot;k-font-icon k-i-hamburger&quot;&gt;&lt;/span&gt;" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="14,2,8,0"/>
+    </Border>
+
+  </Grid>
+
+  <!-- Main Area -->
+  <ItemsControl id="mainArea" Grid.Column="1" Grid.Row="1" ItemsSource="{currentPath.views}">
+    <ItemsControl.ItemsPanel>
+      <Stack Orientation="Horizontal"/>
+    </ItemsControl.ItemsPanel>
+    <DataTemplate>
+      <ControlTemplate Content="{.}"/>
+    </DataTemplate>
+  </ItemsControl>
 </Grid>

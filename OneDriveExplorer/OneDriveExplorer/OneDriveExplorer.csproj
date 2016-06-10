@@ -11,7 +11,7 @@
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="app\FolderView.xml" />
     <Content Include="app\LoginView.xml" />
     <Content Include="app\MainView.xml" />
     <Content Include="callback.html" />
@@ -34,19 +35,30 @@
     <None Include="Scripts\linq-vsdoc.js" />
     <Content Include="Scripts\linq.js" />
     <Content Include="Scripts\linq.min.js" />
-    <Content Include="web.config" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="app\FolderView.ts" />
     <TypeScriptCompile Include="app\controls\ProgressIndicator.ts" />
     <TypeScriptCompile Include="app\LoginView.ts" />
     <TypeScriptCompile Include="app\LoginViewModel.ts" />
     <TypeScriptCompile Include="app\MainView.ts" />
     <TypeScriptCompile Include="app\MainViewModel.ts" />
+    <TypeScriptCompile Include="app\NavigationPath.ts" />
+    <TypeScriptCompile Include="app\NavigationItem.ts" />
     <TypeScriptCompile Include="app\UserManager.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\kendo-ui\kendo-ui.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\layouts.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment-node.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
@@ -72,7 +84,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52668</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52668/</IISUrl>
+          <IISUrl>https://localhost/OneDriveExplorer</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid Rows="10 64 64 * 24" class="folderView">
+
+
+  <!-- Folder Header -->
+  <Stack Orientation="Vertical" Grid.Row="1" Margin="5">
+    <TextBlock Text="{item.friendlyName}" VerticalAlignment="Center" class="folderView title"/>
+    <TextBlock Text="{item.hint}" VerticalAlignment="Center" class="folderView subtitle"/>
+  </Stack>
+
+  <!-- Toolbar -->
+  <Stack Orientation="Horizontal" Grid.Row="2">
+    
+  </Stack>
+
+  <!-- Folder Content -->
+  <ItemsControl class="folderView content" ItemsSource="{item.children}" Grid.Row="3">
+    <DataTemplate TargetType="app.FolderItem">
+      <Grid class="folderView content item" Columns="32 32 * 32" Margin="5,1,5,0" Command="{owner.navigateToItemCommand}" CommandParameter="{.}">
+        <TextBlock Text="&lt;i class=&quot;icons8-folder&quot;&gt;&lt;/i&gt;" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1"/>
+        <TextBlock Text="{name}" Grid.Column="2" VerticalAlignemnt="Center" Margin="0,6,0,6"/>
+        <TextBlock Text="&lt;i class=&quot;icons8-angle-right&quot;&gt;&lt;/i&gt;" Grid.Column="3" VerticalAlignemnt="Center" Margin="0,4,0,4"/>
+      </Grid>
+    </DataTemplate>
+    <DataTemplate TargetType="app.FileItem">
+      <Grid class="folderView content item" Columns="32 32 * 32" Margin="5,1,5,0">
+        <TextBlock Text="{icon}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1"/>
+        <TextBlock Text="{name}" Grid.Column="2" VerticalAlignemnt="Center" Margin="0,4,0,4"/>
+      </Grid>
+    </DataTemplate>
+    
+  </ItemsControl>
+
+  
+  
+</Grid>
+  

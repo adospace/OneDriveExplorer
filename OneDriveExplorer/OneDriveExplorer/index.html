@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <title>OneDrive Explorer</title>
-    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.common.min.css" />
-    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.blueopal.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.2.504/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2016.2.504/styles/kendo.blueopal.min.css" />
     <link rel="stylesheet" href="app.css" type="text/css" />
-    <script src="https://use.fontawesome.com/8d936f9322.js"></script>
+    <!--<script src="https://use.fontawesome.com/8d936f9322.js"></script>-->
+    <link rel="stylesheet" href="//maxcdn.icons8.com/fonts/icons8_win10/1.0./styles.min.css">
 </head>
 <body>
     <!-- =========================
@@ -21,18 +22,25 @@
     </div>
 
 
-    <script src="http://kendo.cdn.telerik.com/2016.2.504/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2016.2.504/js/jquery.min.js"></script>
 
 
-    <script src="http://kendo.cdn.telerik.com/2016.2.504/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2016.2.504/js/kendo.all.min.js"></script>
+
+    <!--<script id="odauth" src="odauth.js"
+            clientId="0000000044186143" scopes="onedrive.readonly wl.signin"
+            redirectUri="http://79.55.177.49/callback.html"></script>-->
 
     <script id="odauth" src="odauth.js"
-            clientId="0000000044186143" scopes="onedrive.readonly wl.signin"
-            redirectUri="http://79.55.177.49/callback.html"></script>
+            clientId="000000004C193E1C" scopes="onedrive.readonly wl.signin"
+            redirectUri="https://79.33.4.122/OneDriveExplorer/callback.html"></script>
+   
 
     <script src="Scripts/layouts.js" type="text/javascript"></script>
     <script src="Scripts/linq.js" type="text/javascript"></script>
     
+    <script src="Scripts/filesize.min.js" type="text/javascript"></script>
+    <script src="Scripts/moment.min.js" type="text/javascript"></script>
     
 
     <script src="app.js" type="text/javascript"></script>
