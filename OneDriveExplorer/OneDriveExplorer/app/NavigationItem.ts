@@ -43,9 +43,9 @@ module app {
 
         getPath(): string {
             if (this.parent == null)
-                return "/";
-
-            return this.parent.getPath() + this.name;
+                return "";
+            
+            return this.parent.getPath() + "/" + this.name;
         }
 
         private _model: NavigationItemModel;
@@ -57,6 +57,9 @@ module app {
                 var oldValue = this._model;
                 this._model = value;
                 this.onPropertyChanged("model", value, oldValue);
+
+                while (this._children.count > 0)
+                    this._children.remove(this._children.at(this._children.count - 1));
             }
         }
 

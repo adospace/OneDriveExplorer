@@ -379,7 +379,8 @@ var app;
         });
         MainViewModel.prototype.navigateToItem = function (item) {
             var _this = this;
-            var odurl = "https://api.onedrive.com/v1.0/drive/root{0}?expand=children&access_token={1}".format(item.parent == null ? "" : ":" + item.getPath() + ":", app.UserManager.current.AuthToken);
+            var odurl = "https://api.onedrive.com/v1.0/drive/root{0}?expand=children&access_token={1}".format(item.parent == null ? "" : ":" + encodeURIComponent(item.getPath()) + ":", app.UserManager.current.AuthToken);
+            console.log(odurl);
             this.isBusy = true;
             $.ajax({
                 type: "GET",
@@ -448,8 +449,8 @@ var app;
         });
         NavigationItem.prototype.getPath = function () {
             if (this.parent == null)
-                return "/";
-            return this.parent.getPath() + this.name;
+                return "";
+            return this.parent.getPath() + "/" + this.name;
         };
         Object.defineProperty(NavigationItem.prototype, "model", {
             get: function () {
@@ -463,6 +464,8 @@ var app;
                 var oldValue = this._model;
                 this._model = value;
                 this.onPropertyChanged("model", value, oldValue);
+                while (this._children.count > 0)
+                    this._children.remove(this._children.at(this._children.count - 1));
             }
         };
         Object.defineProperty(NavigationItem.prototype, "friendlyName", {
@@ -578,12 +581,18 @@ var app;
             configurable: true
         });
         NavigationPath.prototype.navigateTo = function (item, owner) {
-            var indexOfItem = this._items.elements.indexOf(item);
-            if (indexOfItem != -1) {
-                while (indexOfItem < this._items.count) {
-                    this._items.remove(this._items[this.items.count - 1]);
-                    this._views.remove(this._views[this._views.count - 1]);
+            var parentOfitem = item.parent;
+            while (parentOfitem != null) {
+                var indexOfParentOfItem = this._items.elements.indexOf(parentOfitem);
+                if (indexOfParentOfItem != -1) {
+                    while (indexOfParentOfItem + 1 < this._items.count) {
+                        this._items.remove(this._items.at(this._items.count - 1));
+                        this._views.remove(this._views.at(this._views.count - 1));
+                    }
+                    parentOfitem = parentOfitem.parent;
                 }
+                else
+                    break;
             }
             this._items.add(item);
             this._views.add(new app.FolderView(item, owner));
@@ -612,6 +621,8 @@ var app;
         __extends(UserManager, _super);
         function UserManager() {
             _super.call(this);
+            //auth_token=>EwCIAq1DBAAUGCCXc8wU/zFu9QnLdZXy+YnElFkAAeWrSBcGgdJujhwAepsd94j/3zfoXq6/kVH03fgL0VUbDml5boLW/sJh2jfoGTbZbzwmd1iUpWG5r2rJIEvddjCzGjfkcfucqgSuAJ1RsvvDPITKti5yWScLi+s5qMInueugwB5tp0Nb6I/EgEgqf/ztcc0C/s78RFyY0LKvkJTFsEzY0io3ANFVljsvUVpH7Qti+1EpawAr3bXqLkmCb7hLiY/8M9xRT1//1BDBrFfimg1KxcULyot14u7uYRvM1nf5idXBwL5FbpOTSwVrXhyzMi+TK6Y67bRm+lBH3+sMTUxqTIXxOsDrp8dedA1beTure41CzdFOSTTUYzFrvFADZgAACLIc5VL7QCv8WAEfmpwIs00nSz5b9+vy0zACWjvCIkxcnzWzdeylSceTnFPgeJfC1RfiPLPttE5gBcBu2DoYaKOi9GYIsNGOegA99m0TEjBlEWQLALVfTARfCnQyXCM/bmmL0MCbdIZmOgtISRhTYpztUXHEgRRKRlb9GcSD0uLsWXO/uTEq0ikV92h8btZDdBnU083SvQpigB1ph8jkJFvZqKGE7J9h2YJikPqv88Lmn9O2JaHTvPQX2svrv58M8gfXY0m4V9TbN6p+wdXpZ5aQ5x8nmMrYJg4kS7RN20QjQ23kqlMC9SabItVLLNj6HZCEx4aNc+ZsJBHF4i+e48/YqVxiqhj71gFsERH8hwIXZG+dSkZ10OZXNfvwrWaTybQORhQ81aQr+AP9cOFipGoDLQbLJeFr4R2ZgUQ10RCg+w6YhVQTF1HR7RIJ+0Nq3QrO6yNMfeiiJHxX+WYlaCrm7GcB
+            this._token = "EwCIAq1DBAAUGCCXc8wU/zFu9QnLdZXy+YnElFkAAeWrSBcGgdJujhwAepsd94j/3zfoXq6/kVH03fgL0VUbDml5boLW/sJh2jfoGTbZbzwmd1iUpWG5r2rJIEvddjCzGjfkcfucqgSuAJ1RsvvDPITKti5yWScLi+s5qMInueugwB5tp0Nb6I/EgEgqf/ztcc0C/s78RFyY0LKvkJTFsEzY0io3ANFVljsvUVpH7Qti+1EpawAr3bXqLkmCb7hLiY/8M9xRT1//1BDBrFfimg1KxcULyot14u7uYRvM1nf5idXBwL5FbpOTSwVrXhyzMi+TK6Y67bRm+lBH3+sMTUxqTIXxOsDrp8dedA1beTure41CzdFOSTTUYzFrvFADZgAACLIc5VL7QCv8WAEfmpwIs00nSz5b9+vy0zACWjvCIkxcnzWzdeylSceTnFPgeJfC1RfiPLPttE5gBcBu2DoYaKOi9GYIsNGOegA99m0TEjBlEWQLALVfTARfCnQyXCM/bmmL0MCbdIZmOgtISRhTYpztUXHEgRRKRlb9GcSD0uLsWXO/uTEq0ikV92h8btZDdBnU083SvQpigB1ph8jkJFvZqKGE7J9h2YJikPqv88Lmn9O2JaHTvPQX2svrv58M8gfXY0m4V9TbN6p+wdXpZ5aQ5x8nmMrYJg4kS7RN20QjQ23kqlMC9SabItVLLNj6HZCEx4aNc+ZsJBHF4i+e48/YqVxiqhj71gFsERH8hwIXZG+dSkZ10OZXNfvwrWaTybQORhQ81aQr+AP9cOFipGoDLQbLJeFr4R2ZgUQ10RCg+w6YhVQTF1HR7RIJ+0Nq3QrO6yNMfeiiJHxX+WYlaCrm7GcB";
             if (UserManager._current != null)
                 throw new Error("UserManager already initialized");
             UserManager._current = this;
@@ -685,10 +696,10 @@ var app;
 })(app || (app = {}));
 window.onload = function () {
     //redirect to debug
-    if (window.location.href.indexOf("https://79.33.4.122") != 0) {
-        window.location.href = "https://79.33.4.122/OneDriveExplorer";
-        return;
-    }
+    //if (window.location.href.indexOf("https://79.33.4.122") != 0) {
+    //    window.location.href = "https://79.33.4.122/OneDriveExplorer";
+    //    return;
+    //}
     layouts.DepObject.logBindingTraceToConsole = true;
     //remove preloader
     document.body.removeChild(document.body.firstElementChild);

@@ -4,10 +4,10 @@
 window.onload = () => {
 
     //redirect to debug
-    if (window.location.href.indexOf("https://79.33.4.122") != 0) {
-        window.location.href = "https://79.33.4.122/OneDriveExplorer";
-        return;
-    }
+    //if (window.location.href.indexOf("https://79.33.4.122") != 0) {
+    //    window.location.href = "https://79.33.4.122/OneDriveExplorer";
+    //    return;
+    //}
 
     layouts.DepObject.logBindingTraceToConsole = true;
     //remove preloader

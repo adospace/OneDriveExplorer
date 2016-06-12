@@ -87,7 +87,8 @@ module app {
 
         navigateToItem(item: NavigationItem) {
             
-            var odurl = "https://api.onedrive.com/v1.0/drive/root{0}?expand=children&access_token={1}".format(item.parent == null ? "" : ":" + item.getPath() + ":", UserManager.current.AuthToken);
+            var odurl = "https://api.onedrive.com/v1.0/drive/root{0}?expand=children&access_token={1}".format(item.parent == null ? "" : ":" + encodeURIComponent(item.getPath()) + ":", UserManager.current.AuthToken);
+            console.log(odurl);
 
             this.isBusy = true;
 

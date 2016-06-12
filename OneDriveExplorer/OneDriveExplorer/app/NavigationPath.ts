@@ -20,12 +20,19 @@ module app {
 
         navigateTo(item: NavigationItem, owner: MainViewModel) {
 
-            var indexOfItem = this._items.elements.indexOf(item);
-            if (indexOfItem != -1) {
-                while (indexOfItem < this._items.count) {
-                    this._items.remove(this._items[this.items.count - 1]);
-                    this._views.remove(this._views[this._views.count - 1]);
+            var parentOfitem = item.parent;
+            while (parentOfitem != null) {
+                var indexOfParentOfItem = this._items.elements.indexOf(parentOfitem);
+                if (indexOfParentOfItem != -1) {
+                    while (indexOfParentOfItem + 1 < this._items.count) {
+                        this._items.remove(this._items.at(this._items.count - 1));
+                        this._views.remove(this._views.at(this._views.count - 1));
+                    }
+
+                    parentOfitem = parentOfitem.parent;
                 }
+                else
+                    break;
             }
 
             this._items.add(item);
